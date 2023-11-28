@@ -12,7 +12,7 @@ bool Si7021::begin() {
 
     sleep_ms(100);
 
-    u_int8_t buf[8];
+    uint8_t buf[8];
     get_id(buf);
 
     if (buf[4] != SI7021_DEVICE_ID) {
@@ -23,7 +23,7 @@ bool Si7021::begin() {
 }
 
 float Si7021::read_temperature() {
-    u_int8_t temp_cmd[1] = { SI7021_CMD_TEMP_NO_HOLD };
+    uint8_t temp_cmd[1] = { SI7021_CMD_TEMP_NO_HOLD };
     uint8_t temp_buf[2];
 
     i2c_write_blocking(i2c, SI7021_ADDR, temp_cmd, 1, true);
@@ -36,7 +36,7 @@ float Si7021::read_temperature() {
 }
 
 float Si7021::read_humidity() {
-    u_int8_t hum_cmd[1] = { SI7021_CMD_HUM_NO_HOLD };
+    uint8_t hum_cmd[1] = { SI7021_CMD_HUM_NO_HOLD };
     uint8_t hum_buf[2];
 
     i2c_write_blocking(i2c, SI7021_ADDR, hum_cmd, 1, true);
@@ -49,10 +49,10 @@ float Si7021::read_humidity() {
 }
 
 void Si7021::get_id(uint8_t *buf) {
-    u_int8_t buf_id_0[2] = { SI7021_CMD_ID_0_0, SI7021_CMD_ID_0_1 };
-    u_int8_t buf_id_1[2] = { SI7021_CMD_ID_1_0, SI7021_CMD_ID_1_1 };
+    uint8_t buf_id_0[2] = { SI7021_CMD_ID_0_0, SI7021_CMD_ID_0_1 };
+    uint8_t buf_id_1[2] = { SI7021_CMD_ID_1_0, SI7021_CMD_ID_1_1 };
 
-    u_int8_t read_buf_0[4], read_buf_1[4];
+    uint8_t read_buf_0[4], read_buf_1[4];
 
     i2c_write_blocking(i2c, SI7021_ADDR, buf_id_0, 2, true);
     i2c_read_blocking(i2c, SI7021_ADDR, read_buf_0, 4, false);
