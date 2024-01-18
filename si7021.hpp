@@ -1,8 +1,8 @@
-#include "pico/stdlib.h"
-#include "hardware/i2c.h"
-
 #ifndef SI7021_
 #define SI7021_
+
+#include "pico/stdlib.h"
+#include "hardware/i2c.h"
 
 #define SI7021_ADDR (0x40)
 
@@ -26,10 +26,10 @@ class Si7021 {
 public:
     Si7021(i2c_inst_t *i2c_type);
     bool begin();
-    float read_temperature();
-    float read_humidity();
+    bool read_temperature(double *temperature);
+    bool read_humidity(double *humidity);
 
-    void get_id(uint8_t *buf);
+    bool get_id(uint8_t *buf);
     bool reset();
 
 private:

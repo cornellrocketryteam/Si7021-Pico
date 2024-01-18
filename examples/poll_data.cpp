@@ -3,8 +3,8 @@
 #include <cstdio>
 
 #define I2C_PORT i2c0
-#define I2C_SDA 4
-#define I2C_SCL 5
+#define I2C_SDA 12
+#define I2C_SCL 13
 
 Si7021 therm(I2C_PORT);
 
@@ -29,11 +29,21 @@ int main() {
         printf("Init failed\n");
         return 1;
     }
-    float temp, humidity;
+
+    double temp, humidity;
+    bool ret;
 
     while (true) {
-        temp = therm.read_temperature();
-        humidity = therm.read_humidity();
+        ret = therm.read_temperature(&temp);
+        if (!ret) {
+            printf("Temperature reading failed\n");
+        }
+
+        ret = therm.read_humidity(&humidity);
+        if (!ret) {
+            printf("Humidity reading failed\n");
+        }
+
         printf("Temperature: %.3f\n", temp);
         printf("Humidity: %.3f\n", humidity);
         sleep_ms(200);
