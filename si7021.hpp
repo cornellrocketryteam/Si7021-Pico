@@ -61,7 +61,7 @@ private:
      */
     bool get_id(uint8_t *buf);
 
-        /**
+    /**
      * Return value for I2C reads and writes.
      */
     int ret;
@@ -72,4 +72,4 @@ private:
     i2c_inst_t *i2c;
 };
 
-#endif
+#endif // SI7021_HPP
