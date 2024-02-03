@@ -11,7 +11,7 @@ Si7021 therm(I2C_PORT);
 int main() {
     stdio_init_all();
 
-    i2c_init(I2C_PORT, 100 * 1000);
+    i2c_init(I2C_PORT, 400 * 1000);
     gpio_set_function(I2C_SDA, GPIO_FUNC_I2C);
     gpio_set_function(I2C_SCL, GPIO_FUNC_I2C);
 
@@ -30,7 +30,7 @@ int main() {
         return 1;
     }
 
-    double temp, humidity;
+    float temp, humidity;
     bool ret;
 
     while (true) {
@@ -44,8 +44,8 @@ int main() {
             printf("Humidity reading failed\n");
         }
 
-        printf("Temperature: %.3f\n", temp);
-        printf("Humidity: %.3f\n", humidity);
+        printf("Temperature: %.3f C\n", temp);
+        printf("Humidity: %.3f %%\n", humidity);
         sleep_ms(200);
     }
 

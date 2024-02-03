@@ -15,15 +15,17 @@ add_compile_options(-Wall
     -Wno-unused-function
 )
 
-add_executable(therm
+add_definitions(-DDEBUG)
+
+add_executable(${PROJECT_NAME}
     poll_data.cpp
     ../si7021.cpp
 )
 # Pull in common dependencies
-target_link_libraries(therm pico_stdlib hardware_i2c)
+target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_i2c)
 
-pico_enable_stdio_usb(therm 1)
-pico_enable_stdio_uart(therm 0)
+pico_enable_stdio_usb(${PROJECT_NAME} 1)
+pico_enable_stdio_uart(${PROJECT_NAME} 0)
 
 # Create map/bin/hex file etc.
-pico_add_extra_outputs(therm)
+pico_add_extra_outputs(${PROJECT_NAME})

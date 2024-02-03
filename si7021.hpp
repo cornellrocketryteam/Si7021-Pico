@@ -1,17 +1,14 @@
 #ifndef SI7021_
 #define SI7021_
 
-#include "pico/stdlib.h"
 #include "hardware/i2c.h"
+#include "pico/stdlib.h"
 
 #define SI7021_ADDR (0x40)
 
 #define SI7021_DEVICE_ID (0x15)
 
-#define SI7021_CMD_HUM_HOLD (0xE5)
 #define SI7021_CMD_HUM_NO_HOLD (0xF5)
-
-#define SI7021_CMD_TEMP_HOLD (0xE3)
 #define SI7021_CMD_TEMP_NO_HOLD (0xF3)
 
 #define SI7021_CMD_RESET (0xFE)
@@ -26,8 +23,8 @@ class Si7021 {
 public:
     Si7021(i2c_inst_t *i2c_type);
     bool begin();
-    bool read_temperature(double *temperature);
-    bool read_humidity(double *humidity);
+    bool read_temperature(float *temperature);
+    bool read_humidity(float *humidity);
 
     bool get_id(uint8_t *buf);
     bool reset();
@@ -35,6 +32,5 @@ public:
 private:
     i2c_inst_t *i2c;
 };
-
 
 #endif
