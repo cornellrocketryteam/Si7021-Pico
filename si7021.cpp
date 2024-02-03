@@ -27,7 +27,6 @@ bool Si7021::begin() {
 }
 
 bool Si7021::read_temperature(float *temperature) {
-    int ret;
     uint8_t temp_cmd[1] = {SI7021_CMD_TEMP_NO_HOLD};
     uint8_t temp_buf[2];
 
@@ -49,7 +48,6 @@ bool Si7021::read_temperature(float *temperature) {
 }
 
 bool Si7021::read_humidity(float *humidity) {
-    int ret;
     uint8_t hum_cmd[1] = {SI7021_CMD_HUM_NO_HOLD};
     uint8_t hum_buf[2];
 
@@ -71,7 +69,6 @@ bool Si7021::read_humidity(float *humidity) {
 }
 
 bool Si7021::get_id(uint8_t *buf) {
-    int ret;
     uint8_t buf_id_0[2] = {SI7021_CMD_ID_0_0, SI7021_CMD_ID_0_1};
     uint8_t buf_id_1[2] = {SI7021_CMD_ID_1_0, SI7021_CMD_ID_1_1};
 
