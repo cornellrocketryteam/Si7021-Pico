@@ -45,7 +45,7 @@ int main() {
         }
 
         printf("Temperature: %.3f C\n", temp);
-        printf("Humidity: %.3f %%\n", humidity);
+        printf("Humidity: %.3f%%\n", humidity);
         sleep_ms(200);
     }
 

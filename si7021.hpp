@@ -19,6 +19,9 @@
 #define SI7021_CMD_ID_1_0 (0xFC)
 #define SI7021_CMD_ID_1_1 (0xC9)
 
+/**
+ * Representation of the Si7021 sensor.
+ */
 class Si7021 {
 public:
     /**
